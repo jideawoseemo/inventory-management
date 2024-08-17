@@ -5,9 +5,11 @@ import com.jidetech.inventory_service.repository.InventoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class InventoryServiceApplication {
 
 	public static void main(String[] args) {
@@ -21,17 +23,16 @@ public class InventoryServiceApplication {
 			Inventory inventory = new Inventory();
 			inventory.setSkuCode("iphone_13");
 			inventory.setQuantity(100);
+			System.out.println();
 
 			Inventory inventory1 = new Inventory();
-			inventory.setSkuCode("iphone_13_red");
-			inventory.setQuantity(0);
+			inventory1.setSkuCode("iphone_13_red");
+			inventory1.setQuantity(0);
 
-			Inventory inventory2 = new Inventory();
-			inventory.setSkuCode("iphone_13_blue");
-			inventory.setQuantity(3);
 			inventoryRepository.save(inventory);
+			System.out.println();
 			inventoryRepository.save(inventory1);
-			inventoryRepository.save(inventory2);
 		};
 	}
+
 }
